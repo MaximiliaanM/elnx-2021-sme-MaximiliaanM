@@ -1,0 +1,14 @@
+# host_vars/pu001.yml
+# Variables visible to pu001
+---
+#Firewall services
+rhbase_firewall_allow_services:
+  - https
+  - http
+
+#SELinux
+rhbase_selinux_state: 'enforcing'
+
+#EPEL Repository
+rhbase_repositories:
+  - epel-release
