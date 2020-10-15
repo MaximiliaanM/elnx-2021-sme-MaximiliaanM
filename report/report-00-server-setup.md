@@ -3,7 +3,7 @@
 - Student name: Maximiliaan Muylaert
 - Github repo: <https://github.com/HoGentTIN/elnx-2021-sme-MaximiliaanM>
 
-Describe the goals of the current iteration/assignment in a short sentence.
+
 
 ---
 

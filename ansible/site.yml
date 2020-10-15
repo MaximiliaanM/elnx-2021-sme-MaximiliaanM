@@ -5,4 +5,16 @@
   become: true
   roles:
     - bertvv.rh-base
-  
+    - bertvv.httpd
+    - bertvv.mariadb
+    - bertvv.wordpress
+
+  pre_tasks:
+    - name: Copy web server private key
+      copy:
+        src: files/pu001.key
+        dest: /etc/pki/tls/private/pu001.key
+    - name: Copy web server certificate
+      copy:
+        src: files/pu001.crt
+        dest: /etc/pki/tls/certs/pu001.crt

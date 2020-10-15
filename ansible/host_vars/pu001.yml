@@ -12,3 +12,27 @@ rhbase_selinux_state: 'enforcing'
 #EPEL Repository
 rhbase_repositories:
   - epel-release
+
+#MariaDB config
+mariadb_mirror: 'mariadb.mirror.nucleus.be/yum'
+
+mariadb_root_password: HelloThereGeneralKenobi
+
+mariadb_databases: 
+  - name: Wordpress_DB
+
+mariadb_users:
+  - name: maximiliaan
+    password: ILoveLinux2
+    priv: '*.*:ALL,GRANT'
+
+#Wordpress
+wordpress_database: Wordpress_DB
+
+wordpress_user: maximiliaan
+
+wordpress_password: ILoveLinux2
+
+#Apache
+httpd_ssl_certificate_key_file: 'pu001.key'
+httpd_ssl_certificate_file: 'pu001.crt'
