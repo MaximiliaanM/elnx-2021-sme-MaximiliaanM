@@ -14,9 +14,7 @@ rhbase_repositories:
   - epel-release
 
 #MariaDB config
-mariadb_mirror: 'mariadb.mirror.nucleus.be/yum'
-
-mariadb_root_password: HelloThereGeneralKenobi
+#mariadb_mirror: 'mariadb.mirror.nucleus.be/yum'
 
 mariadb_databases: 
   - name: Wordpress_DB
@@ -25,6 +23,8 @@ mariadb_users:
   - name: maximiliaan
     password: ILoveLinux2
     priv: '*.*:ALL,GRANT'
+
+mariadb_root_password: HelloThereGeneralKenobi
 
 #Wordpress
 wordpress_database: Wordpress_DB

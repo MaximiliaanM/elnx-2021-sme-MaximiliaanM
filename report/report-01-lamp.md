@@ -6,8 +6,57 @@
 ---
 
 ## Test plan
+In the test script `test/pu001/lamp.bats`, you may want to change the variables in the test script to the values you have used in your configuration script:
 
-How are you going to verify that the requirements are met? The test plan is a detailed checklist of actions to take, including the expected result for each action, in order to prove your system meets the requirements. Part of this is running the automated tests, but it is not always possible to validate *all* requirements throught these tests.
+```bash
+mariadb_root_password=fogMeHud8
+wordpress_database=wp_db
+wordpress_user=wp_user
+wordpress_password=CorkIg
+```
+1. Start the VM with `vagrant up pu001` in a bash shell.
+
+2. Log in into the VM with `vagrant ssh pu001`.
+
+3. Run the test file with `sudo /vagrant/test/runbats.sh`. You should get following output:
+
+```bash
+[vagrant@pu001 /]$ sudo /vagrant/test/runbats.sh
+Running test /vagrant/test/common.bats
+ ✓ SELinux should be set to 'Enforcing'
+ ✓ Firewall should be enabled and running
+ ✓ EPEL repository should be available
+ ✓ Bash-completion should have been installed
+ ✓ bind-utils should have been installed
+ ✓ Git should have been installed
+ ✓ Nano should have been installed
+ ✓ Tree should have been installed
+ ✓ Vim-enhanced should have been installed
+ ✓ Wget should have been installed
+ ✓ Admin user maximiliaan should exist
+ ✓ An SSH key should have been installed for maximiliaan
+ - Custom /etc/motd should have been installed (skipped)
+
+13 tests, 0 failures, 1 skipped
+Running test /vagrant/test/pu001/lamp.bats
+ ✓ The necessary packages should be installed
+ ✓ The Apache service should be running
+ ✓ The Apache service should be started at boot
+ ✓ The MariaDB service should be running
+ ✓ The MariaDB service should be started at boot
+ ✓ The SELinux status should be ‘enforcing’
+ ✓ Web traffic should pass through the firewall
+ ✓ Mariadb should have a database for Wordpress
+ ✓ The MariaDB user should have write
+ ✓ The website should be accessible through HTTP
+ ✓ The website should be accessible through HTTPS
+ ✓ The certificate should not be the default one
+ ✓ The Wordpress install page should be visible under http://203.0.113.10/wordpress/
+ ✓ MariaDB should not have a test database
+ ✓ MariaDB should not have anonymous users
+
+15 tests, 0 failures
+```
 
 ---
 
@@ -127,7 +176,47 @@ This code copies the generated files to the correct location because genrating t
 
 ## Test report
 
-The test report is a transcript of the execution of the test plan, with the actual results. Significant problems you encountered should also be mentioned here, as well as any solutions you found. The test report should clearly prove that you have met the requirements.
+After running the test I noticed that the packages of wordpress end php-mysql were not installed. That was due to the fact that centos 8.2 did not support those packages yet at the time of making this assignment.
+
+After using centos 7.6 i got following output:
+
+```bash
+[vagrant@pu001 /]$ sudo /vagrant/test/runbats.sh
+Running test /vagrant/test/common.bats
+ ✓ SELinux should be set to 'Enforcing'
+ ✓ Firewall should be enabled and running
+ ✓ EPEL repository should be available
+ ✓ Bash-completion should have been installed
+ ✓ bind-utils should have been installed
+ ✓ Git should have been installed
+ ✓ Nano should have been installed
+ ✓ Tree should have been installed
+ ✓ Vim-enhanced should have been installed
+ ✓ Wget should have been installed
+ ✓ Admin user maximiliaan should exist
+ ✓ An SSH key should have been installed for maximiliaan
+ - Custom /etc/motd should have been installed (skipped)
+
+13 tests, 0 failures, 1 skipped
+Running test /vagrant/test/pu001/lamp.bats
+ ✓ The necessary packages should be installed
+ ✓ The Apache service should be running
+ ✓ The Apache service should be started at boot
+ ✓ The MariaDB service should be running
+ ✓ The MariaDB service should be started at boot
+ ✓ The SELinux status should be ‘enforcing’
+ ✓ Web traffic should pass through the firewall
+ ✓ Mariadb should have a database for Wordpress
+ ✓ The MariaDB user should have write
+ ✓ The website should be accessible through HTTP
+ ✓ The website should be accessible through HTTPS
+ ✓ The certificate should not be the default one
+ ✓ The Wordpress install page should be visible under http://203.0.113.10/wordpress/
+ ✓ MariaDB should not have a test database
+ ✓ MariaDB should not have anonymous users
+
+15 tests, 0 failures
+```
 
 ---
 
