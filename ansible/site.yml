@@ -8,7 +8,6 @@
     - bertvv.httpd
     - bertvv.mariadb
     - bertvv.wordpress
-
   pre_tasks:
     - name: Copy web server private key
       copy:
@@ -18,3 +17,9 @@
       copy:
         src: files/pu001.crt
         dest: /etc/pki/tls/certs/pu001.crt
+
+- hosts: pr001, pr002
+  become: true
+  roles:
+    - bertvv.rh-base
+    - bertvv.bind

@@ -1,6 +1,10 @@
 # group_vars/all.yml
 # Variables visible to all nodes
 ---
+#EPEL Repository
+rhbase_repositories:
+  - epel-release
+
 #Packages installed on all servers
 rhbase_install_packages:
   - bash-completion

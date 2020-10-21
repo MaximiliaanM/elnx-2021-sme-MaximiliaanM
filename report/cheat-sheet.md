@@ -8,6 +8,9 @@
 | Task                | Command |
 | :---                | :---    |
 | Query IP-adress(es) | `ip a`  |
+| SSH to machine | `ssh <USER_NAME>@<IP>`|
+| SSH with vagrant| `vagrant ssh <SERVER_NAME>`
+|Install role dependencies| `./scripts/role-deps.sh`|
 
 ## Ansible host config
 

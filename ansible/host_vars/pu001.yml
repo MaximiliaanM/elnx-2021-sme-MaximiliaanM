@@ -9,10 +9,6 @@ rhbase_firewall_allow_services:
 #SELinux
 rhbase_selinux_state: 'enforcing'
 
-#EPEL Repository
-rhbase_repositories:
-  - epel-release
-
 #MariaDB config
 #mariadb_mirror: 'mariadb.mirror.nucleus.be/yum'
 
