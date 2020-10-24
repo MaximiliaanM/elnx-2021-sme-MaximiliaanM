@@ -2,7 +2,7 @@
 # Variables visible to pr002
 ---
 #Firewall allow dns
-rhbase_firawall_allow_services:
+rhbase_firewall_allow_services:
   - dns
 
 #Bind
@@ -38,7 +38,8 @@ bind_zones:
           - www
       - name: pu002
         ip: 203.0.113.20
-        aliases: mail
+        aliases: 
+          - mail
       - name: pr001
         ip: 172.16.128.1
         aliases:

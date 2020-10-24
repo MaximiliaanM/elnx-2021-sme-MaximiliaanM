@@ -2,7 +2,7 @@
 # Variables visible to pr001
 ---
 #Firewall allow dns
-rhbase_firawall_allow_services:
+rhbase_firewall_allow_services:
   - dns
 
 #Bind
@@ -18,7 +18,7 @@ bind_zones:
     type: primary
     create_reverse_zones: true
     primaries: 
-     - 172.16.128.1
+      - 172.16.128.1
     name_servers:
       - pr001.avalon.lan.
       - pr002.avalon.lan.

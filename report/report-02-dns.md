@@ -97,7 +97,7 @@ Make 2 new files called `pr001.yml` and `pr002.yml` in `ansible\host_vars`. To c
 1. **Allow dns on the firewall by entering following code:**
 
     ```yaml
-    rhbase_firawall_allow_services:
+    rhbase_firewall_allow_services:
     - dns
     ```
 
@@ -568,6 +568,40 @@ Running test /vagrant/test/pr001/masterdns.bats
 ### Test results of `pr002`:
 
 ```bash
+[vagrant@pr002 ~]$ sudo /vagrant/test/runbats.sh
+Running test /vagrant/test/common.bats
+ ✓ SELinux should be set to 'Enforcing'
+ ✓ Firewall should be enabled and running
+ ✓ EPEL repository should be available
+ ✓ Bash-completion should have been installed
+ ✓ bind-utils should have been installed
+ ✓ Git should have been installed
+ ✓ Nano should have been installed
+ ✓ Tree should have been installed
+ ✓ Vim-enhanced should have been installed
+ ✓ Wget should have been installed
+ ✓ Admin user maximiliaan should exist
+ ✓ An SSH key should have been installed for maximiliaan
+ - Custom /etc/motd should have been installed (skipped)
+
+13 tests, 0 failures, 1 skipped
+Running test /vagrant/test/pr002/slavedns.bats
+ ✓ The dig command should be installed
+ ✓ The main config file should be syntactically correct
+ ✓ The server should be set up as a slave
+ ✓ The server should forward requests to the master server
+ ✓ There should not be a forward zone file
+ ✓ The service should be running
+ ✓ Forward lookups public servers
+ ✓ Forward lookups private servers
+ ✓ Reverse lookups public servers
+ ✓ Reverse lookups private servers
+ ✓ Alias lookups public servers
+ ✓ Alias lookups private servers
+ ✓ NS record lookup
+ ✓ Mail server lookup
+
+14 tests, 0 failures
 
 ```
 
