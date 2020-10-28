@@ -21,7 +21,7 @@ rhbase_users:
     comment: 'Administrator'
     groups:
       - wheel
-    password: $6$6QhrgSAjVwd2IWk8$pzPgb8nirer5NNCupmzei9jMZp5MjuQfkgLuqahI8SYp1yh93./pEHhT9Dp6rjqqhf.rTdfGyAvgsBtO0PYeP1
+    password: '$6$6QhrgSAjVwd2IWk8$pzPgb8nirer5NNCupmzei9jMZp5MjuQfkgLuqahI8SYp1yh93./pEHhT9Dp6rjqqhf.rTdfGyAvgsBtO0PYeP1'
     ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDSKv3fs5Mg0SV33eS+ho96xEHByU3SmI0/UMmXmFkmqWJf+TQO44nzNyOwZiAmLXtZnle5QI92X9GfCm77iTEYaye4wLy60NVoyxg+CggOhaIcc6IxBOajV8YoGHVG7/ZwiUXx/b/pzAcJScXe7n+DIxSkyhJ65r6WIoZhjE5phOsKopjRRJwvsfQsSOHapjeOZuSyJD7T4m1PBvrAnGQ6607mF05fG6UPHCdH3zwMnuutzdLllc4FmmvlqRv6FNAziEouZYenHjRMNOoBwW7fK7RiZrECZnaiqyvY3a+PgKXCLcaEcsdYBdjiJFnZtEITuXVJ3kqZdsJNYbn/bhFK29PsywVC9h1+RI5vJy0DGu1FTH5viAYDeHkm4Us7rAwjsplrHEuGLLfpXPlg8FBHPa/LBBVqkcTY/RWyQyWjUUQKq1eSJgzQvfTuKh9RSyszMOERsJ75fLJlT9aSMNdfXeeOfdHZagMGVPhuEmdYEA1rPNUBV7uBsiC+AS8Ip/Ee4+XvnLRALz4cfS8SN/v344uHORKIAtXsdXAI4YIuunBbiA1dY6x2+V4kHBveMgqtnUKwud++O1ADJH/C1CGHEk0cZeshDIIdnUlsTOMieFe3wrATnGP3Rp5sK0j09jn/YxDsHlkeSA9F66oAZxBynyEX9xduYMpRJ+YShMHFeQ== Maximiliaan@MSI'
 
 
