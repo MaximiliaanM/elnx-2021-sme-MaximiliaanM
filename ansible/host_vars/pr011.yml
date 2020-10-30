@@ -2,7 +2,7 @@
 # Variables visible to pr011
 ---
 #rh-base
-rhbase_allow_services:
+rhbase_firewall_allow_services:
   - samba
   - ftp
   - samba-client
@@ -20,89 +20,89 @@ rhbase_users:
     groups: 
       - management
       - public
-    password: '$1$zAiXtpsN$5MNBgTQ/9AYCY.DCSADb50'
+    password: '$1$ZFYbedpK$1BqpFq.27akSPGPKGQEvt.'
     shell: /sbin/nologin
   - name: stevenv
     comment: 'Steven Van Daele'
     groups: 
       - technical
       - public
-    password: '$1$dsE8PO0L$0Ud2TLW5r788CiOmutvbJ/'
+    password: '$1$Q/h6cFYi$rSGUhwz6fjXUONkin6ISx/'
     shell: /sbin/nologin
   - name: leend
     comment: 'Leen De Meester'
     groups: 
       - technical
       - public
-    password: '$1$PUm409Hm$Heo0yeYUrnutc3KbCcVJU0'
+    password: '$1$yJrOY.Hs$kxjtO.jioHzXYyneg2QUB0'
     shell: /sbin/nologin
   - name: svena
     comment: 'Sven Aerens'
     groups: 
       - sales
       - public
-    password: '$1$yYVHDcjq$KW8G4UD5NRas6Uacg6lbe1'
+    password: '$1$ZXDF43eL$.FfsbcvQOTO0ABp0FaBCX/'
     shell: /sbin/nologin
   - name: nehirb
     comment: 'Nehir Başar'
     groups: 
       - it
       - public
-    password: '$1$gF5l3NVO$HoBhJ6W.A1he4mj40WszO0'
+    password: '$1$f/P0gYJv$8vGE93NErwCAG3JVLDk2u.'
   - name: alexanderd
     comment: 'Alexander De Coninck'
     groups: 
       - technical
       - public
-    password: '$1$6qSsjVcU$l82lCUvc2VaSVk1nG8vY81'
+    password: '$1$eYY3BJa0$huLrIYkmWtC2tYDa/UX5a0'
     shell: /sbin/nologin
   - name: krisv
     comment: 'Kris Vanhaverbeke'
     groups: 
       - management
       - public
-    password: '$1$nCw9oVHo$raOe3TE/pYQM6leszSS54.'
+    password: '$1$w9KJ3wBs$vItNe9pOM/TacJohybsBN.'
     shell: /sbin/nologin
   - name: benoitp
     comment: 'Benoit Pluquet'
     groups: 
       - sales
       - public
-    password: '$1$qvbXL1bd$52FdoVmtzg6neBJvJOxKo1'
+    password: '$1$A/leAFlq$ebat0JXmIcnJZbCm1FOAW/'
     shell: /sbin/nologin
   - name: anc
     comment: 'An Coppens'
     groups: 
       - technical
       - public
-    password: '$1$YD75/B/T$x1OjpJbYb8rVpmDHQ3lOq0'
+    password: '$1$4d3IMxdd$GwV2gUcxLSNIWz6G.b4h80'
     shell: /sbin/nologin
   - name: elenaa
     comment: 'Elena Andreev'
     groups: 
       - management
       - public
-    password: '$1$P7q8K69h$ZINIDvDZCkqpkGqURSRU//'
+    password: '$1$2pAu0cUP$/ELmhxxnzC2ACYFsbuqlU.'
     shell: /sbin/nologin
   - name: evyt
     comment: 'Evy Tilleman'
     groups: 
-      - management
+      - technical
       - public
-    password: '$1$fcryQT7R$zXlfCyNdnO5UDaB6/fTcx1'
+    password: '$1$w/Aa1xDx$zZPwBSaa5.SYMFeqjYY3X0'
     shell: /sbin/nologin
   - name: christophev
     comment: 'Christophe Van der Meersche'
     groups: 
       - it
       - public
-    password: '$1$387i/2QK$Fo8dsKlwJBup5ktE0apAK1'
+    password: '$1$loBujkG3$RbSomxYjSjsKbGG.DwEmL/'
   - name: stefaanv
     comment: 'Stefaan Vernimmen'
     groups: 
       - technical
       - public
-    password: '$1$DlJMq3VR$hkgVRWPELVkVTPja.a/7z0'
+    password: '$1$fwNrpKuS$nBiMtV6Iq87D1IFa4HNtU0'
     shell: /sbin/nologin
   - name: maximiliaan
     comment: 'Maximiliaan Muylaert'
@@ -111,8 +111,12 @@ rhbase_users:
       - it
       - public
     password: '$6$6QhrgSAjVwd2IWk8$pzPgb8nirer5NNCupmzei9jMZp5MjuQfkgLuqahI8SYp1yh93./pEHhT9Dp6rjqqhf.rTdfGyAvgsBtO0PYeP1'
+    ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDSKv3fs5Mg0SV33eS+ho96xEHByU3SmI0/UMmXmFkmqWJf+TQO44nzNyOwZiAmLXtZnle5QI92X9GfCm77iTEYaye4wLy60NVoyxg+CggOhaIcc6IxBOajV8YoGHVG7/ZwiUXx/b/pzAcJScXe7n+DIxSkyhJ65r6WIoZhjE5phOsKopjRRJwvsfQsSOHapjeOZuSyJD7T4m1PBvrAnGQ6607mF05fG6UPHCdH3zwMnuutzdLllc4FmmvlqRv6FNAziEouZYenHjRMNOoBwW7fK7RiZrECZnaiqyvY3a+PgKXCLcaEcsdYBdjiJFnZtEITuXVJ3kqZdsJNYbn/bhFK29PsywVC9h1+RI5vJy0DGu1FTH5viAYDeHkm4Us7rAwjsplrHEuGLLfpXPlg8FBHPa/LBBVqkcTY/RWyQyWjUUQKq1eSJgzQvfTuKh9RSyszMOERsJ75fLJlT9aSMNdfXeeOfdHZagMGVPhuEmdYEA1rPNUBV7uBsiC+AS8Ip/Ee4+XvnLRALz4cfS8SN/v344uHORKIAtXsdXAI4YIuunBbiA1dY6x2+V4kHBveMgqtnUKwud++O1ADJH/C1CGHEk0cZeshDIIdnUlsTOMieFe3wrATnGP3Rp5sK0j09jn/YxDsHlkeSA9F66oAZxBynyEX9xduYMpRJ+YShMHFeQ== Maximiliaan@MSI'
 
 #Samba
+samba_netbios_name: 'FILES'
+samba_workgroup: 'AVALON'
+
 samba_users:
   - name: stevenh
     password: stevenh
@@ -147,52 +151,42 @@ samba_shares:
   - name: management
     comment: 'Management - inaccessible outside this unit'
     group: management
-    browseable: yes
-    writable: yes
     write_list: +management
     valid_users: +management
-    create_mode: 0770
-    directory_mode: 0770
+    create_mode: 770
+    directory_mode: 770
     path: /srv/shares/management
   - name: technical
     comment: 'Technical - visible outside this unit, not writable'
     group: technical
-    browseable: yes
-    writable: yes
     write_list: +technical
     valid_users: +technical, +public
-    force_create_mode: 0775
-    force_directory_mode: 0775
+    create_mode: 775
+    directory_mode: 775
     path: /srv/shares/technical
   - name: sales
     comment: 'Sales - visible to management, not writable'
     group: sales
-    browseable: yes
-    writable: yes
     write_list: +sales
     valid_users: +sales, +management
-    create_mode: 0770
-    directory_mode: 0770
+    create_mode: 770
+    directory_mode: 770
     path: /srv/shares/sales
   - name: it
     comment: 'IT - visible to management, not writable'
     group: it
-    browseable: yes
-    writable: yes
     write_list: +it
     valid_users: +it, +management
-    create_mode: 0770
-    directory_mode: 0770
+    create_mode: 770
+    directory_mode: 770
     path: /srv/shares/it
   - name: public
     comment: 'public'
     group: public
-    browseable: yes
-    writable: yes
     write_list: +public
     valid_users: +public
-    force_create_mode: 0775
-    force_directory_mode: 0775
+    create_mode: 775
+    directory_mode: 775
     path: /srv/shares/public
 
 #vsftpd
