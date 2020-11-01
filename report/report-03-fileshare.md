@@ -18,8 +18,69 @@ Excute the test with `sudo /vagrant/test/runbats.sh`
 
 ### Output of test:
 
-```yaml
+```bash
+[vagrant@pr011 ~]$ sudo /vagrant/test/runbats.sh
+Running test /vagrant/test/common.bats
+ ✓ SELinux should be set to 'Enforcing'
+ ✓ Firewall should be enabled and running
+ ✓ EPEL repository should be available
+ ✓ Bash-completion should have been installed
+ ✓ bind-utils should have been installed
+ ✓ Git should have been installed
+ ✓ Nano should have been installed
+ ✓ Tree should have been installed
+ ✓ Vim-enhanced should have been installed
+ ✓ Wget should have been installed
+ ✓ Admin user maximiliaan should exist
+ ✓ An SSH key should have been installed for maximiliaan
+ - Custom /etc/motd should have been installed (skipped)
 
+13 tests, 0 failures, 1 skipped
+Running test /vagrant/test/pr011/samba.bats
+ ✓ The ’nmblookup’ command should be installed
+ ✓ The ’smbclient’ command should be installed
+ ✓ The Samba service should be running
+ ✓ The Samba service should be enabled at boot
+ ✓ The WinBind service should be running
+ ✓ The WinBind service should be enabled at boot
+ ✓ The SELinux status should be ‘enforcing’
+ ✓ Samba traffic should pass through the firewall
+ ✓ Check existence of users
+ ✓ Checks shell access of users
+ ✓ Samba configuration should be syntactically correct
+ ✓ NetBIOS name resolution should work
+ ✓ read access for share ‘public’
+ ✓ write access for share ‘public’
+ ✓ read access for share ‘management’
+ ✓ write access for share ‘management’
+ ✓ read access for share ‘technical’
+ ✓ write access for share ‘technical’
+ ✓ read access for share ‘sales’
+ ✓ write access for share ‘sales’
+ ✓ read access for share ‘it’
+ ✓ write access for share ‘it’
+
+22 tests, 0 failures
+Running test /vagrant/test/pr011/vsftp.bats
+ ✓ VSFTPD service should be running
+ ✓ VSFTPD service should be enabled at boot
+ ✓ The ’curl’ command should be installed
+ ✓ The SELinux status should be ‘enforcing’
+ ✓ FTP traffic should pass through the firewall
+ ✓ VSFTPD configuration should be syntactically correct
+ ✓ Anonymous user should not be able to see shares
+ ✓ read access for share ‘public’
+ ✓ write access for share ‘public’
+ ✓ read access for share ‘management’
+ ✓ write access for share ‘management’
+ ✓ read access for share ‘technical’
+ ✓ write access for share ‘technical’
+ ✓ read access for share ‘sales’
+ ✓ write access for share ‘sales’
+ ✓ read access for share ‘it’
+ ✓ write access for share ‘it’
+
+17 tests, 0 failures
 ```
 
 ---
@@ -292,7 +353,142 @@ Make a new file called `pr011.yml` in `ansible\host_vars`. To configure this fil
 
 ## Test report
 
+After running all tests, only the `vsftpd.bats` test failed. I had following result:
 
+```bash
+Running test /vagrant/test/pr011/vsftp.bats
+ ✓ VSFTPD service should be running
+ ✓ VSFTPD service should be enabled at boot
+ ✓ The ’curl’ command should be installed
+ ✓ The SELinux status should be ‘enforcing’
+ ✓ FTP traffic should pass through the firewall
+ ✓ VSFTPD configuration should be syntactically correct
+ ✓ Anonymous user should not be able to see shares
+ ✗ read access for share ‘public’
+   (from function `assert_read_access' in file /vagrant/test/pr011/vsftp.bats, line 37,
+    in test file /vagrant/test/pr011/vsftp.bats, line 135)
+     `assert_read_access     public     alexanderd    alexanderd' failed with status 67
+ ✗ write access for share ‘public’
+   (from function `assert_write_access' in file /vagrant/test/pr011/vsftp.bats, line 61,
+    in test file /vagrant/test/pr011/vsftp.bats, line 153)
+     `assert_write_access    public     alexanderd    alexanderd' failed with status 67
+ ✗ read access for share ‘management’
+   (from function `assert_no_read_access' in file /vagrant/test/pr011/vsftp.bats, line 48,
+    in test file /vagrant/test/pr011/vsftp.bats, line 171)
+     `assert_no_read_access  management alexanderd    alexanderd' failed with status 67
+ ✗ write access for share ‘management’
+   (from function `assert_write_access' in file /vagrant/test/pr011/vsftp.bats, line 61,
+    in test file /vagrant/test/pr011/vsftp.bats, line 193)
+     `assert_write_access    management elenaa        elenaa' failed with status 67
+ ✗ read access for share ‘technical’
+   (from function `assert_read_access' in file /vagrant/test/pr011/vsftp.bats, line 37,
+    in test file /vagrant/test/pr011/vsftp.bats, line 207)
+     `assert_read_access     technical  alexanderd    alexanderd' failed with status 67
+ ✗ write access for share ‘technical’
+   (from function `assert_write_access' in file /vagrant/test/pr011/vsftp.bats, line 61,
+    in test file /vagrant/test/pr011/vsftp.bats, line 225)
+     `assert_write_access    technical  alexanderd    alexanderd' failed with status 67
+ ✗ read access for share ‘sales’
+   (from function `assert_no_read_access' in file /vagrant/test/pr011/vsftp.bats, line 48,
+    in test file /vagrant/test/pr011/vsftp.bats, line 243)
+     `assert_no_read_access  sales      alexanderd    alexanderd' failed with status 67
+ ✗ write access for share ‘sales’
+   (from function `assert_write_access' in file /vagrant/test/pr011/vsftp.bats, line 61,
+    in test file /vagrant/test/pr011/vsftp.bats, line 263)
+     `assert_write_access    sales      benoitp       benoitp' failed with status 67
+ ✗ read access for share ‘it’
+   (from function `assert_no_read_access' in file /vagrant/test/pr011/vsftp.bats, line 48,
+    in test file /vagrant/test/pr011/vsftp.bats, line 279)
+     `assert_no_read_access  it         alexanderd    alexanderd' failed with status 67
+ ✗ write access for share ‘it’
+   (from function `assert_write_access' in file /vagrant/test/pr011/vsftp.bats, line 61,
+    in test file /vagrant/test/pr011/vsftp.bats, line 310)
+     `assert_write_access    it         ${admin_user} ${admin_password}' failed with status 67
+   curl: (19) RETR response: 257
+   curl: (19) RETR response: 257
+
+17 tests, 10 failures
+
+```
+
+After some debugging I found out that the test failed with status 67 which corresponds with no login for users. I searched the web and found [a fix](https://serverfault.com/questions/358324/ftp-doesnt-allow-usr-sbin-nologin-user) for this bug. I added a pre-task in the playbook `site.yaml`.
+
+```yaml
+pre_tasks:
+    - name: Add /sbin/nologin to /etc/shells. Allows local users to access ftp without shell access
+      lineinfile:
+        path: /etc/shells
+        line: /sbin/nologin
+```
+
+This allows users to login and not have permission to access the shell.
+
+After running the tests again, every test passed.
+
+```bash
+[vagrant@pr011 ~]$ sudo /vagrant/test/runbats.sh
+Running test /vagrant/test/common.bats
+ ✓ SELinux should be set to 'Enforcing'
+ ✓ Firewall should be enabled and running
+ ✓ EPEL repository should be available
+ ✓ Bash-completion should have been installed
+ ✓ bind-utils should have been installed
+ ✓ Git should have been installed
+ ✓ Nano should have been installed
+ ✓ Tree should have been installed
+ ✓ Vim-enhanced should have been installed
+ ✓ Wget should have been installed
+ ✓ Admin user maximiliaan should exist
+ ✓ An SSH key should have been installed for maximiliaan
+ - Custom /etc/motd should have been installed (skipped)
+
+13 tests, 0 failures, 1 skipped
+Running test /vagrant/test/pr011/samba.bats
+ ✓ The ’nmblookup’ command should be installed
+ ✓ The ’smbclient’ command should be installed
+ ✓ The Samba service should be running
+ ✓ The Samba service should be enabled at boot
+ ✓ The WinBind service should be running
+ ✓ The WinBind service should be enabled at boot
+ ✓ The SELinux status should be ‘enforcing’
+ ✓ Samba traffic should pass through the firewall
+ ✓ Check existence of users
+ ✓ Checks shell access of users
+ ✓ Samba configuration should be syntactically correct
+ ✓ NetBIOS name resolution should work
+ ✓ read access for share ‘public’
+ ✓ write access for share ‘public’
+ ✓ read access for share ‘management’
+ ✓ write access for share ‘management’
+ ✓ read access for share ‘technical’
+ ✓ write access for share ‘technical’
+ ✓ read access for share ‘sales’
+ ✓ write access for share ‘sales’
+ ✓ read access for share ‘it’
+ ✓ write access for share ‘it’
+
+22 tests, 0 failures
+Running test /vagrant/test/pr011/vsftp.bats
+ ✓ VSFTPD service should be running
+ ✓ VSFTPD service should be enabled at boot
+ ✓ The ’curl’ command should be installed
+ ✓ The SELinux status should be ‘enforcing’
+ ✓ FTP traffic should pass through the firewall
+ ✓ VSFTPD configuration should be syntactically correct
+ ✓ Anonymous user should not be able to see shares
+ ✓ read access for share ‘public’
+ ✓ write access for share ‘public’
+ ✓ read access for share ‘management’
+ ✓ write access for share ‘management’
+ ✓ read access for share ‘technical’
+ ✓ write access for share ‘technical’
+ ✓ read access for share ‘sales’
+ ✓ write access for share ‘sales’
+ ✓ read access for share ‘it’
+ ✓ write access for share ‘it’
+
+17 tests, 0 failures
+```
 
 ---
 
@@ -301,4 +497,5 @@ Make a new file called `pr011.yml` in `ansible\host_vars`. To configure this fil
 * [Samba configuration](https://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html)
 * [Test playbook](https://github.com/bertvv/ansible-role-samba/blob/docker-tests/test.yml)
 * [Linux permission calculator](http://permissions-calculator.org/)
+* [/sbin/nologin fix](https://serverfault.com/questions/358324/ftp-doesnt-allow-usr-sbin-nologin-user)
 * README files of the roles samba and vsftpd

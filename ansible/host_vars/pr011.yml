@@ -20,89 +20,89 @@ rhbase_users:
     groups: 
       - management
       - public
-    password: '$1$ZFYbedpK$1BqpFq.27akSPGPKGQEvt.'
+    password: '$6$OzpYqj1zCRf.nOBc$Q/ESZYYq93Gubq1aoY7SjVI5DgfeCS5jUBTXX/Y9APpPSvf8be2QKtY/7.qCRk.iyIzhjxUTrz3ALfiLtfkZn0'
     shell: /sbin/nologin
   - name: stevenv
     comment: 'Steven Van Daele'
     groups: 
       - technical
       - public
-    password: '$1$Q/h6cFYi$rSGUhwz6fjXUONkin6ISx/'
+    password: '$6$blnFypH/VSM8Om25$iqHfrat//MkvX097MgSYtU8F5.OwdL126F4BW8ava24e2fsB2ydveSJqaCpVs9heN13oIag45Syq/ejjfNHos0'
     shell: /sbin/nologin
   - name: leend
     comment: 'Leen De Meester'
     groups: 
       - technical
       - public
-    password: '$1$yJrOY.Hs$kxjtO.jioHzXYyneg2QUB0'
+    password: '$6$qBsX0RiwwOk6I/Tw$ccLlHqr7VhFVO9bMbZ1JAGK6G9cILoaNGavBnzBPeef5hSsxdGhxIF5i326ba9i6Lu0QL4LpU60w0bYamt315/'
     shell: /sbin/nologin
   - name: svena
     comment: 'Sven Aerens'
     groups: 
       - sales
       - public
-    password: '$1$ZXDF43eL$.FfsbcvQOTO0ABp0FaBCX/'
+    password: '$6$Z3NfAysB7xtnIBmK$DOnnPNdb0PTLf6KoY8he48X.rclGT5HlpYwS8t7pIjHAAIaNB5wc2IMuokCKeHTYbAgIR.mfGLWx6Z1VAf5tv0'
     shell: /sbin/nologin
   - name: nehirb
     comment: 'Nehir Başar'
     groups: 
       - it
       - public
-    password: '$1$f/P0gYJv$8vGE93NErwCAG3JVLDk2u.'
+    password: '$6$5kAyiNJHj3jMmGfw$yUncU2pT../NTpOwlCOvH.rO/36Z95gHDhWRGHwTaTFnp2.KGDyoTNv0yrHtBaeC2.70akcZ.vUhGGn2S6ZM01'
   - name: alexanderd
     comment: 'Alexander De Coninck'
     groups: 
       - technical
       - public
-    password: '$1$eYY3BJa0$huLrIYkmWtC2tYDa/UX5a0'
+    password: '$6$C5w2AJX6/5abAybL$ExQcKg88wLACrDQaN4GraZZFedj7/HCO048ZREdUnQGcpss6V9fUErwFJOVKVBBif4hwytxwQ2tlqfXYp7AZU1'
     shell: /sbin/nologin
   - name: krisv
     comment: 'Kris Vanhaverbeke'
     groups: 
       - management
       - public
-    password: '$1$w9KJ3wBs$vItNe9pOM/TacJohybsBN.'
+    password: '$6$1RN0c0viqeaAhmXT$4.38EKyLETbLJXAJfxR/iYE56vg/NuuyRQt0pmh8rxMPuk5Lr7I94L822DVrrIu6N7PV1NpoUGVsRgrSWsPIJ1'
     shell: /sbin/nologin
   - name: benoitp
     comment: 'Benoit Pluquet'
     groups: 
       - sales
       - public
-    password: '$1$A/leAFlq$ebat0JXmIcnJZbCm1FOAW/'
+    password: '$6$FeFHvrpexMXgeV3e$LSO9ajuRz.wDPySWDTywIswq0Hj5yrVF4P3cUNhhau0yM.0HWawq2EK3T/6JRBdju/9u429yefraJfU2BAqC31'
     shell: /sbin/nologin
   - name: anc
     comment: 'An Coppens'
     groups: 
       - technical
       - public
-    password: '$1$4d3IMxdd$GwV2gUcxLSNIWz6G.b4h80'
+    password: '$6$f6twvZKXj64ITjP7$JszIt.8Y5pPm4syCIn9QNllKoO/h/H9bb.0BMjs96tjEPEvyukqajIxt5tIz7OyQaQz9bxS5IMkoHV6q.lnss1'
     shell: /sbin/nologin
   - name: elenaa
     comment: 'Elena Andreev'
     groups: 
       - management
       - public
-    password: '$1$2pAu0cUP$/ELmhxxnzC2ACYFsbuqlU.'
+    password: '$6$oxuPPFysEx5XQ4PH$tGUdQkF6Dr9MPq1FOikpQl4wTlU.a71L9iu/Nf73PnhSZwBzvRJSiDuPeik8Us6ONHvo3MMsKTFBRzd.G9/tj1'
     shell: /sbin/nologin
   - name: evyt
     comment: 'Evy Tilleman'
     groups: 
       - technical
       - public
-    password: '$1$w/Aa1xDx$zZPwBSaa5.SYMFeqjYY3X0'
+    password: '$6$YWM4TSIFZB/f2GWK$sZ9nJAKIqYo4wtwrAtkmni2IiJ/uS/A19iw/3BM/EG7oOAOUAbHkzIW1brMaoykJ0.OUgHPCdxHpj3zsgyz2T.'
     shell: /sbin/nologin
   - name: christophev
     comment: 'Christophe Van der Meersche'
     groups: 
       - it
       - public
-    password: '$1$loBujkG3$RbSomxYjSjsKbGG.DwEmL/'
+    password: '$6$WUPntUuBZZHZACX7$ZGT4/zzm0bWuaxetnyaEEAzXbkkjE0D70N1fyTA4Az/Omm3f.KqpEDZyc3/YvmQC8ZMLAHux8yqmRj2Z/HZt8/'
   - name: stefaanv
     comment: 'Stefaan Vernimmen'
     groups: 
       - technical
       - public
-    password: '$1$fwNrpKuS$nBiMtV6Iq87D1IFa4HNtU0'
+    password: '$6$IZChBmQg9HEXJPAK$lwwfeqbPGqIsiwz3LjwyXQqziqAKC/ok3V4hz3V.e1a5.oVNdDAItzaye1HHdSTwr0VrM4beOken3zGsVRDHC0'
     shell: /sbin/nologin
   - name: maximiliaan
     comment: 'Maximiliaan Muylaert'
@@ -110,7 +110,7 @@ rhbase_users:
       - wheel
       - it
       - public
-    password: '$6$6QhrgSAjVwd2IWk8$pzPgb8nirer5NNCupmzei9jMZp5MjuQfkgLuqahI8SYp1yh93./pEHhT9Dp6rjqqhf.rTdfGyAvgsBtO0PYeP1'
+    password: '$6$0mTtRTrd1Fr6f3uu$46KR96V.Or4dcnB7wxr0Cds/KB85xVqIvCfUeJGRsEgyQVMHB4quM2pO1ABJrW.dmjsokDnd10.PsIVTKkHQB0'
     ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDSKv3fs5Mg0SV33eS+ho96xEHByU3SmI0/UMmXmFkmqWJf+TQO44nzNyOwZiAmLXtZnle5QI92X9GfCm77iTEYaye4wLy60NVoyxg+CggOhaIcc6IxBOajV8YoGHVG7/ZwiUXx/b/pzAcJScXe7n+DIxSkyhJ65r6WIoZhjE5phOsKopjRRJwvsfQsSOHapjeOZuSyJD7T4m1PBvrAnGQ6607mF05fG6UPHCdH3zwMnuutzdLllc4FmmvlqRv6FNAziEouZYenHjRMNOoBwW7fK7RiZrECZnaiqyvY3a+PgKXCLcaEcsdYBdjiJFnZtEITuXVJ3kqZdsJNYbn/bhFK29PsywVC9h1+RI5vJy0DGu1FTH5viAYDeHkm4Us7rAwjsplrHEuGLLfpXPlg8FBHPa/LBBVqkcTY/RWyQyWjUUQKq1eSJgzQvfTuKh9RSyszMOERsJ75fLJlT9aSMNdfXeeOfdHZagMGVPhuEmdYEA1rPNUBV7uBsiC+AS8Ip/Ee4+XvnLRALz4cfS8SN/v344uHORKIAtXsdXAI4YIuunBbiA1dY6x2+V4kHBveMgqtnUKwud++O1ADJH/C1CGHEk0cZeshDIIdnUlsTOMieFe3wrATnGP3Rp5sK0j09jn/YxDsHlkeSA9F66oAZxBynyEX9xduYMpRJ+YShMHFeQ== Maximiliaan@MSI'
 
 #Samba

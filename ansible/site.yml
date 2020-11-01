@@ -30,3 +30,8 @@
     - bertvv.rh-base
     - bertvv.samba
     - bertvv.vsftpd
+  pre_tasks:
+    - name: Add /sbin/nologin to /etc/shells. Allows local users to access ftp without shell access
+      lineinfile:
+        path: /etc/shells
+        line: /sbin/nologin
