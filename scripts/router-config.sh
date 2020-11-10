@@ -52,7 +52,7 @@ set system time-zone Europe/Brussels
 #
 
 set service dns forwarding domain avalon.lan server 172.16.128.1
-set service dns forwarding name-server 10.0.2.3
+set service dns forwarding name-server 10.0.2.15
 set service dns forwarding listen-on 'eth1'
 set service dns forwarding listen-on 'eth2'
 
