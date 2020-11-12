@@ -1,0 +1,27 @@
+# host_vars/pr002.yml
+# Variables visible to pr003
+---
+#Firewall allow dhcp
+rhbase_firewall_allow_services:
+  - dhcp
+
+#DHCP
+dhcp_global_domain_name: avalon.lan
+dhcp_global_domain_name_servers: 
+  - 172.16.128.1
+  - 172.16.128.2
+dhcp_global_subnet_mask: 255.255.0.0
+dhcp_global_routers: 172.16.255.254
+dhcp_global_default_lease_time: 43200
+dhcp_global_max_lease_time: 43200
+dhcp_subnets:
+  - ip: 172.16.0.0
+    netmask: 255.255.0.0
+    range_begin: 172.16.0.2
+    range_end: 172.16.127.254
+    default_lease_time: 14400
+    max_lease_time: 14400
+  - ip: 172.16.0.0
+    netmask: 255.255.0.0
+    range_begin: 172.16.128.1
+    range_end: 172.16.191.254

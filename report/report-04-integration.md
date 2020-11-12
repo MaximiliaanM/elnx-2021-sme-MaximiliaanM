@@ -69,6 +69,36 @@ To configure the settings of the VyOS router open `scripts\router-config.sh` and
     ```
 
 ### Configure DHCP
+
+1. Add `pr003` as a vagrant host:
+
+    To set as host open the `vagrant-hosts.yml` file and enter following code:
+
+    ```yaml
+    - name: pr003
+    ip: 172.16.128.3
+    netmask: 255.255.0.0
+    ```
+
+2. Configure playbook & installing roles:
+
+    Open the playbook `site.yml` and add the hosts **pr003**. install the roles `bertvv.rh-base` and `bertvv.dhcp`.
+
+    ```yaml
+    - hosts: pr003
+      become: true
+      roles:
+        - bertvv.rh-base
+        - bertvv.dhcp
+    ```
+
+    After adding them to the `ansible\site.yml` file, we're going to install them. Open a bash shell in the main directory and run following script: `./scripts/role-deps.sh`.
+
+
+3. Configure host `pr003`
+
+
+
 ---
 
 ## Test report
@@ -80,4 +110,4 @@ To configure the settings of the VyOS router open `scripts\router-config.sh` and
 ## Resources
 
 * [VyOS Documentation](https://docs.vyos.io/en/latest/index.html)
-
+* [NTP pool Belgium](https://www.pool.ntp.org/zone/be)

@@ -35,3 +35,9 @@
       lineinfile:
         path: /etc/shells
         line: /sbin/nologin
+
+- hosts: pr003
+  become: true
+  roles:
+    - bertvv.rh-base
+    - bertvv.dhcp
