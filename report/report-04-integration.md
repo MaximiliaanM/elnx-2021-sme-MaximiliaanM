@@ -94,7 +94,7 @@ To configure the settings of the VyOS router open `scripts\router-config.sh` and
 
     ```bash
     set service dns forwarding domain avalon.lan server 172.16.128.1
-    set service dns forwarding name-server 10.0.2.3
+    set service dns forwarding name-server system
     set service dns forwarding listen-on 'eth1'
     set service dns forwarding listen-on 'eth2'
     ```
@@ -133,13 +133,11 @@ To configure the settings of the VyOS router open `scripts\router-config.sh` and
     ```yaml
     #Firewall allow DHCP
     rhbase_firewall_allow_services:
-      - dhcp
+    - dhcp
 
     #DHCP
     dhcp_global_domain_name: avalon.lan
-    dhcp_global_domain_name_servers: 
-      - 172.16.128.1
-      - 172.16.128.2
+    dhcp_global_domain_name_servers: 172.16.255.254
     dhcp_global_subnet_mask: 255.255.0.0
     dhcp_global_routers: 172.16.255.254
     dhcp_global_default_lease_time: 43200
@@ -147,14 +145,19 @@ To configure the settings of the VyOS router open `scripts\router-config.sh` and
     dhcp_subnets:
     - ip: 172.16.0.0
         netmask: 255.255.0.0
-        range_begin: 172.16.0.2
-        range_end: 172.16.127.254
-        default_lease_time: 14400
-        max_lease_time: 14400
-    - ip: 172.16.0.0
-        netmask: 255.255.0.0
-        range_begin: 172.16.192.1
-        range_end: 172.16.255.254
+        pools:
+        - default_lease_time: 14400
+            max_lease_time: 14400
+            range_begin: 172.16.0.2
+            range_end: 172.16.127.254
+            allow: unknown-clients
+        - range_begin: 172.16.192.1
+            range_end: 172.16.255.254
+            deny: unknown-clients
+    dhcp_hosts:
+    - name: kali
+        mac: '08:00:27:38:a0:ec'
+        ip: 172.16.192.2
     ```
 
 ---
@@ -176,23 +179,51 @@ To configure the settings of the VyOS router open `scripts\router-config.sh` and
     - Did the VM receive correct IP settings from the DHCP server?
         - IP address in the correct range for either guest with dynamic IP or reserved IP?
         - Correct subnet mask?
+
+            ![ip a](img/ip-a.jpg)
         - DNS server?
+
+            ![cat /etc/resolv.conf](img/etc-resolveconf.jpg)
         - Default gateway?
+
+            ![ip r](img/ip-r.jpg)
+        
     - LAN connectivity: can you ping
         - other hosts in the same network?
+        
+            ![ping 172.16.128.1](img/ping-ns1.jpg)
         - the gateway? All its IP addresses?
+
+            ![ping 172.16.255.254](img/ping-gateway.jpg)
         - a host in the DMZ?
+
+            ![ping 203.0.113.10](img/ping-web.jpg)
         - the default gateway of the router?
+
+            ![ping 203.0.113.254](img/ping-gateway-router.jpg)
     - Is the DNS server responsive?
         - does it resolve www.avalon.lan?
-            - does it resolve an external name? (e.g. www.google.com, icanhazip.com)
+
+            ![dig www.avalon.lan](img/dig-avalon.jpg)
+        - does it resolve an external name? (e.g. www.google.com, icanhazip.com)
+
+            ![dig icanhazip.com](img/dig-icanhazip.jpg)
         - does it resolve reverse lookups for avalon.lan? (e.g. 203.0.113.10, 172.16.128.1)
+
+            ![dig -x 172.16.128.1](img/dig-reverse.jpg)
 - **Transport layer**
     - Not applicable, as no services run on the workstation
 - **Application layer**: Are network services available?
     - Is <http://www.avalon.lan/wordpress/> visible?
+
+        ![www.avalan.lan/wordpress](img/avalon-wordpress.jpg)
     - Is an external website, e.g. <http://icanhazip.com/>, visible?
+
+        ![Icanhazip.com](img/icanhazip.jpg)
     - is the fileserver available? e.g. smb://files/public or `ftp files.avalon.lan`.
+
+        ![ftp](img/ftp.jpg)
+        ![smb](img/smb.jpg)
 
 ---
 
