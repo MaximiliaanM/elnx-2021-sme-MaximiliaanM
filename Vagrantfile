@@ -110,6 +110,7 @@ def provision_ansible(node, host, groups)
         "ansible/#{host['playbook']}" :
         "ansible/site.yml"
     ansible.become = true
+    ansible.vault_password_file = "/tmp/vault_pass"
   end
 end
 
@@ -152,6 +153,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Configure other hosts according to vagrant-hosts.yml
   hosts.each do |host|
+    config.vm.provision :shell, inline: "echo 'ILoveLinux2' > /tmp/vault_pass"
     config.vm.define host['name'] do |node|
       node.vm.box = host['box'] ||= DEFAULT_BASE_BOX
       node.vm.box_url = host['box_url'] if host.key? 'box_url'

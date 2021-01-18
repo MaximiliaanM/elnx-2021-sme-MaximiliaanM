@@ -161,7 +161,38 @@ To configure the settings of the VyOS router open `scripts\router-config.sh` and
 
 ## Test report
 
+1. Start all servers with: `vagrant up`
 
+2. Create a new VirtualBox VM manually, give it two host-only network interfaces, both attached to the VirtualBox host-only network with IP 172.16.0.0/16.
+
+3. Boot the VM with a LiveCD ISO (e.g. Fedora, but Ubuntu, Kali, etc. should also be fine).
+
+4. Things to check (follow the guidelines for bottom-up troubleshooting!):
+
+- **Network access layer**
+    - Is the workstation connected to the correct VirtualBox Host-only network?
+    - Is any NAT or bridged interface disabled (or cable disconnected)?
+- **Internet layer**
+    - Did the VM receive correct IP settings from the DHCP server?
+        - IP address in the correct range for either guest with dynamic IP or reserved IP?
+        - Correct subnet mask?
+        - DNS server?
+        - Default gateway?
+    - LAN connectivity: can you ping
+        - other hosts in the same network?
+        - the gateway? All its IP addresses?
+        - a host in the DMZ?
+        - the default gateway of the router?
+    - Is the DNS server responsive?
+        - does it resolve www.avalon.lan?
+            - does it resolve an external name? (e.g. www.google.com, icanhazip.com)
+        - does it resolve reverse lookups for avalon.lan? (e.g. 203.0.113.10, 172.16.128.1)
+- **Transport layer**
+    - Not applicable, as no services run on the workstation
+- **Application layer**: Are network services available?
+    - Is <http://www.avalon.lan/wordpress/> visible?
+    - Is an external website, e.g. <http://icanhazip.com/>, visible?
+    - is the fileserver available? e.g. smb://files/public or `ftp files.avalon.lan`.
 
 ---
 
