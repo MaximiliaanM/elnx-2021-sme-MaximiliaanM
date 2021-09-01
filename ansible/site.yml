@@ -41,3 +41,29 @@
   roles:
     - bertvv.rh-base
     - bertvv.dhcp
+
+- hosts: pr010
+  become: true
+  roles:
+    - bertvv.rh-base
+  tasks:
+    - name: Installing Docker & Docker Compose
+      yum: 
+        name: 
+          - docker
+          - docker-compose
+        state: latest
+    - name: Starting & enabling Docker
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+    - name: Copy docker-compose file to VM
+      copy:
+        src: files/docker-compose.yml
+        dest: /home/vagrant/docker-compose.yml
+    - name: Start containers with docker-compose
+      shell:
+        chdir: /home/vagrant/
+        cmd: docker-compose up -d
+  

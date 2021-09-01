@@ -1,0 +1,10 @@
+# host_vars/pr010.yml
+# Variables visible to pr010
+---
+#Firewall services
+rhbase_firewall_allow_services:
+  - https
+  - http
+
+#SELinux
+rhbase_selinux_state: 'enforcing'
