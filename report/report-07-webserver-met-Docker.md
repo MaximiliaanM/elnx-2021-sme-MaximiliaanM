@@ -7,6 +7,11 @@
 
 ## Test plan
 
+1. Start host with `vagrant up pr010`
+2. Surf to the wordpress webserver with ip address: `172.16.128.10`
+   1. The wordpress installation page should be visible
+3. Surf to the portainer container monitoring system with ip address and port: `172.16.128.10:9000`
+   1. The portainer login page should be visible
 
 ---
 
@@ -41,14 +46,10 @@ Create a new file named `docker-compose.yml` in the folder `files` and insert fo
 
 ```yaml
 version: '3.1'
-
 services:
-
   wordpress:
     image: wordpress
     restart: always
-    ports:
-      - 81:80
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
@@ -56,6 +57,8 @@ services:
       WORDPRESS_DB_NAME: exampledb
     volumes:
       - wordpress:/var/www/html
+    ports:
+      - 80:80
 
   db:
     image: mysql:5.7
@@ -77,13 +80,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
-
-  haproxy:
-    build: ./haproxy
-    container_name: haproxy
-    restart: always
-    ports:
-      - "80:80"
 
 volumes:
   wordpress:
@@ -115,66 +111,24 @@ Open `site.yml` and add the new host `pr010` to the playbook.
       copy:
         src: files/docker-compose.yml
         dest: /home/vagrant/docker-compose.yml
-    - name: Copy dockerfile for HAProxy to VM
-      copy:
-        src: files/Dockerfile
-        dest: /home/vagrant/haproxy/Dockerfile
-    - name: Copy HAProxy config file to VM
-      copy:
-        src: files/haproxy.cfg
-        dest: /home/vagrant/haproxy/haproxy.cfg
     - name: Start containers with docker-compose
       shell:
         chdir: /home/vagrant/
         cmd: docker-compose up -d
-```
-### 4. Add necessary config files for HAProxy
-
-Create a Dockerfile named `Dockerfile` to the folder `files` with following code.
-
-```dockerfile
-FROM haproxy:latest
-COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
-```
-
-Create the HAProxy config file named `haproxy.cfg` and place it also in the folder `files`
-
-```
-global
-  stats socket /var/run/api.sock user haproxy group haproxy mode 660 level admin expose-fd listeners
-  log stdout format raw local0 info
-
-defaults
-  mode http
-  timeout client 10s
-  timeout connect 5s
-  timeout server 10s
-  timeout http-request 10s
-  log global
-
-frontend stats
-  bind *:8404
-  stats enable
-  stats uri /
-  stats refresh 10s
-
-frontend myfrontend
-  bind :80
-  default_backend webservers
-
-backend webservers
-  server s1 81:8080 check
 ```
     
 ---
 
 ## Test report
 
+1. Start host with `vagrant up pr010`
+2. Surf to the wordpress webserver with ip address: `172.16.128.10`
+   1. The wordpress installation page should be visible
+   2. ![Docker-Wordpress](img/docker-wordpress.JPG)
+3. Surf to the portainer container monitoring system with ip address and port: `172.16.128.10:9000`
+   1. The portainer login page should be visible
+   2. ![Docker-Portainer](img/docker-portainer.JPG)
 
 ---
 
 ## Resources
-
-* [Ansible Vault documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#id1)
-* [WSL installation](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-* [Ansible Installation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu)
